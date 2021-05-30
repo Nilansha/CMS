@@ -1,0 +1,28 @@
+﻿
+<h2>Courses List</h2>
+
+<p>
+    <a class="btn btn-success" href="/Courses/Create">+ Create</a>
+</p>
+<div ng-controller="courseController" ng-init="GetAllCourses();">
+    <table class="table">
+        <tr>
+            <th>
+                Course Name
+            </th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="course in courses">
+            <td>
+                {{course.Course_Name}}
+            </td>
+                
+            <td align="right">
+                <a class="btn btn-info" href="/Courses/Details#{{course.Course_Id}}">Details</a> 
+                <a class="btn btn-warning" href="/Courses/Edit/{{course.Course_Id}}">Edit</a> 
+                <a class="btn btn-danger" href="/Courses/Delete/{{course.Course_Id}}">Delete</a> 
+            </td>
+        </tr>
+
+    </table>
+</div>

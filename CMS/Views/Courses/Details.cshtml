@@ -1,0 +1,30 @@
+﻿
+
+<h2>Details</h2>
+
+<div>
+    <h4>Course</h4>
+    <hr />
+    <dl class="dl-horizontal" ng-controller="courseController" ng-init="getCourseById();">
+        <dt>
+            Course Name
+        </dt>
+        - {{course.Course_Name}}
+        <dd>
+
+        </dd>
+
+        <dt>
+            Course Status
+        </dt>
+        - {{(course.Course_Status == 1) ? 'Active Course' : 'Hold'}}
+
+        <dd>
+
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
