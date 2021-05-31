@@ -23,8 +23,11 @@ Sample CRUD for campus management system using .NET and AngularJS
         <li>Service.js</li>
         <li>Module.js</li>
       </ul>
-      Other modules <code>/Subjects</code>, <code>/Teachers</code>, <code>/Students</code>, <code>/Grades</code> use .net Razor pages as frontend templates.   
-
+      Other modules <code>/Subjects</code>, <code>/Teachers</code>, <code>/Students</code>, <code>/Grades</code> use .net Razor pages as frontend templates.
+      <br/>
+### Backend technologies used
+        - ASP MVC 5
+        - SQL Server using Entity Framework 6 and LocalDB
 ## Further Developments
 
 You can extend your database as follows.
