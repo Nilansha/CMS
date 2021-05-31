@@ -28,7 +28,7 @@ namespace CMS.Controllers
             return Json(courseList, JsonRequestBehavior.AllowGet);
         }
 
-        // Loading the View
+        // Loading the View for details
         public ActionResult Details()
         {
             return View();
@@ -73,35 +73,34 @@ namespace CMS.Controllers
             return View(course);
         }
 
-        // Load edit course details view
-        // GET: Courses/Edit/5
-        public ActionResult Edit(int? id)
+        // Load view for Edit
+        public ActionResult Edit()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Course course = db.Courses.Find(id);
-            if (course == null)
-            {
-                return HttpNotFound();
-            }
-            return View(course);
+            return View();
         }
+
+        
 
         // Update Course details
         // POST: Courses/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Course_Id,Course_Name,Course_Status")] Course course)
+        public JsonResult UpdateCourse([Bind(Include = "Course_Id,Course_Name,Course_Status")] Course course)
         {
+
+            var updatedCourse = new Course
+            {
+                Course_Id = Convert.ToInt32(course.Course_Id),
+                Course_Name = course.Course_Name,
+                Course_Status = Convert.ToInt32(course.Course_Status)
+            };
+
             if (ModelState.IsValid)
             {
-                db.Entry(course).State = EntityState.Modified;
+                db.Entry(updatedCourse).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Json(new { code = 1 });
             }
-            return View(course);
+            return Json(course, JsonRequestBehavior.AllowGet);
         }
 
         // Load course delete view

@@ -17,6 +17,15 @@
          return response;
      };
 
-
+     //Service :: Update course
+     this.updateCourse = function (course) {
+         var response = $http({
+             method: "post",
+             url: "/Courses/UpdateCourse",
+             data: JSON.stringify(course),
+             dataType: "json"
+         });
+         return response;
+     }
          
 })
