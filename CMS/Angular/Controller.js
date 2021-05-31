@@ -44,6 +44,7 @@
         });
     };
 
+    //Add or Update a course
     $scope.AddOrUpdateCourses = function () {
         if ($scope.Course_Name == '' || $scope.Course_Status == '') {
             alert('Input Field is required');
@@ -65,17 +66,30 @@
                 alert('Error in updating record');
             });
         } else {
-            // alert('add')
-            //var getData = myService.AddEmp(Employee);
-            //getData.then(function (msg) {
-            //    GetAllEmployee();
-            //    alert(msg.data);
-            //    $scope.divEmployee = false;
-            //}, function () {
-            //    alert('Error in adding record');
-            //    console.log(Error);
-            //});
+            var getData = myService.addCourse(Courses);
+            getData.then(function (msg) {
+                $window.location.href ="/Courses";
+            }, function () {
+                alert('Error in adding record');
+            });
         }
     }
+
+    //Delete a course
+    $scope.deleteCourse = function () {
+        debugger;
+        var hash = window.location.hash; //#2
+        var id = hash.replace('#', ''); //2
+
+        var getData = myService.deleteCourse(id);
+        debugger;
+        getData.then(function (msg) {
+            $window.location.href = "/Courses";
+            alert('Employee Deleted');
+        }, function () {
+            alert('Error in Deleting Record');
+        });
+    }
+
     
 });

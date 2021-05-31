@@ -26,6 +26,31 @@
              dataType: "json"
          });
          return response;
-     }
+     };
+
+     //Service :: Add course
+     this.addCourse = function (course) {
+         debugger;
+         var response = $http({
+             method: "post",
+             url: "/Courses/CreateCourse",
+             data: JSON.stringify(course),
+             dataType: "json"
+         });
+         return response;
+     };
+
+     //Service :: Delete course
+     this.deleteCourse = function (courseId) {
+         var intId = parseInt(courseId);
+         var response = $http({
+             method: "post",
+             url: "/Courses/DeleteById",
+             params: {
+                 id: JSON.stringify(intId)
+             }
+         });
+         return response;
+     };
          
 })

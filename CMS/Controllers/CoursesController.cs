@@ -60,17 +60,15 @@ namespace CMS.Controllers
         // Create new course
         // POST: Courses/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Course_Id,Course_Name,Course_Status")] Course course)
+        public JsonResult CreateCourse([Bind(Include = "Course_Id,Course_Name,Course_Status")] Course course)
         {
             if (ModelState.IsValid)
             {
                 db.Courses.Add(course);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
 
-            return View(course);
+            return Json(course, JsonRequestBehavior.AllowGet);
         }
 
         // Load view for Edit
@@ -98,37 +96,29 @@ namespace CMS.Controllers
             {
                 db.Entry(updatedCourse).State = EntityState.Modified;
                 db.SaveChanges();
-                return Json(new { code = 1 });
             }
             return Json(course, JsonRequestBehavior.AllowGet);
         }
 
         // Load course delete view
         // GET: Courses/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Course course = db.Courses.Find(id);
-            if (course == null)
-            {
-                return HttpNotFound();
-            }
-            return View(course);
+            return View();
         }
 
-        // Delete particular course
-        // POST: Courses/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        
+        public JsonResult DeleteById(int? id)
         {
-            Course course = db.Courses.Find(id);
+            var idInt = Convert.ToInt32(id);
+            if (id == null)
+            {
+                return Json(HttpStatusCode.BadRequest);
+            }
+            Course course = db.Courses.Find(idInt);
             db.Courses.Remove(course);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Json("Done");
         }
 
         protected override void Dispose(bool disposing)

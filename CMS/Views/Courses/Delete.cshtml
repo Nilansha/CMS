@@ -1,40 +1,33 @@
-﻿@model CMS.Models.Course
-
-@{
-    ViewBag.Title = "Delete";
-}
-
+﻿
 <h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
-<div>
+<div ng-controller="courseController">
     <h4>Course</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal"  ng-init="getCourseById();">
         <dt>
-            @Html.DisplayNameFor(model => model.Course_Name)
+            Course Name
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Course_Name)
+            {{course.Course_Name}}
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Course_Status)
+            Course Status
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Course_Status)
+            {{(course.Course_Status == 1) ? 'Active Course' : 'Hold'}}
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+    <div class="form-actions no-color">
+
+        <a class="btn btn-default" href="/Courses">Back</a> |
+        <input type="button" class="btn btn-danger" value="Delete" ng-click="deleteCourse()" />
+    </div>
 </div>
