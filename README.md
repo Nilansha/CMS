@@ -1,6 +1,12 @@
 # CMS (Campus Management System)
 Sample CRUD for campus management system using .NET and AngularJS
 
+<b>Configurations</b><br/>
+1 . First create connection using this <a href="https://github.com/Nilansha/CMS/tree/master/CMS/Database">Database Script</a> to your local database. Ex: (localdb)\MSSQLLocalDB.
+<br/>
+<br/>
+<b>About Project</b>
+
 <code>/Courses</code>
       This module use AngularJS as a frontend library. This module includes three five seperate view templates.
       <ul>
