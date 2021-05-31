@@ -107,7 +107,7 @@ namespace CMS.Controllers
             return View();
         }
 
-        
+        // Delete course
         public JsonResult DeleteById(int? id)
         {
             var idInt = Convert.ToInt32(id);
