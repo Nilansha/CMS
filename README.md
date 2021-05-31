@@ -2,8 +2,7 @@
 Sample CRUD for campus management system using .NET and AngularJS
 
 ## Configurations
-1 . First create connection using this <a href="https://github.com/Nilansha/CMS/tree/master/CMS/Database">Database Script</a> to your local database. Ex: (localdb)\MSSQLLocalDB.
-<br/>
+1. Download the project and run using Visual Studio.
 <br/>
 
 ## About Project
